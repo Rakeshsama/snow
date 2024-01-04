@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "22536506-5acb-4a4b-b877-0f6ce26c0269",
+		"name": "GitHub APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11867120"
+	},
+	"item": [
+		{
+			"name": "File Content (Ref path)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/repos/harinair78/SNowIntegration/contents/Overview.txt?ref=JSONFiles",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"repos",
+						"harinair78",
+						"SNowIntegration",
+						"contents",
+						"Overview.txt"
+					],
+					"query": [
+						{
+							"key": "ref",
+							"value": "JSONFiles"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "File Content",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/repos/harinair78/SNowIntegration/contents/Overview.txt?ref=JSONFiles",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"repos",
+						"harinair78",
+						"SNowIntegration",
+						"contents",
+						"Overview.txt"
+					],
+					"query": [
+						{
+							"key": "ref",
+							"value": "JSONFiles"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
