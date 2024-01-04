@@ -1,90 +1,66 @@
 {
-	"info": {
-		"_postman_id": "22536506-5acb-4a4b-b877-0f6ce26c0269",
-		"name": "GitHub APIs",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "11867120"
-	},
-	"item": [
-		{
-			"name": "File Content (Ref path)",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "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",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://api.github.com/repos/harinair78/SNowIntegration/contents/Overview.txt?ref=JSONFiles",
-					"protocol": "https",
-					"host": [
-						"api",
-						"github",
-						"com"
-					],
-					"path": [
-						"repos",
-						"harinair78",
-						"SNowIntegration",
-						"contents",
-						"Overview.txt"
-					],
-					"query": [
-						{
-							"key": "ref",
-							"value": "JSONFiles"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "File Content",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "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",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://api.github.com/repos/harinair78/SNowIntegration/contents/Overview.txt?ref=JSONFiles",
-					"protocol": "https",
-					"host": [
-						"api",
-						"github",
-						"com"
-					],
-					"path": [
-						"repos",
-						"harinair78",
-						"SNowIntegration",
-						"contents",
-						"Overview.txt"
-					],
-					"query": [
-						{
-							"key": "ref",
-							"value": "JSONFiles"
-						}
-					]
-				}
-			},
-			"response": []
-		}
-	]
+    "profileName": "Mitchell-Billing",
+    "initialProvisioning": {
+        "activeDirectory": ["First Name", "Preferred Name", "LastName", "Employee No", "Login ID",
+            "Email","Mirror User", "Email Type", "Request ID", "External Address",
+            {"adGroups": []}
+        ]
+    },
+    "softwareLicensing": [
+        {"O365": "E3", "windowsMobility10": "VDA"}
+    ],
+    "infrastructure": {
+        "AWS": {
+            "account": "372860290376",
+            "vpc": "vpc-01e3b22f0d6f00d53",
+            "directory": "d-9067bacb91",
+            "awsWorkspace": {
+                "bundle": "Performance",
+                "rootDriveSpace": "80 GB SSD",
+                "userDriveSpace": "100 GB SSD",
+                "os": "Win10"
+            }
+        }
+    },
+
+    "installedApplications": [
+        "Acrobat Reader",
+        "MS Office",
+        {   "MRRS": {
+            "appProv": {   },
+            "userProv": {  }
+            }
+        }
+    ],
+
+    "saasApplications": [
+        {
+            "NetSuite": {"mimicRoleId": "nsRole"}
+        },
+        {
+            "Salesforce": {"mimicRoleId": "sfRole"}
+        },
+        { "ESP": {
+            "roleKey1": "roleVal1"
+        }
+        },
+        {
+            "eBlink": {"mimicRoleId": "ebRole"}
+        },
+        { "Sharepoint": {
+            "roleKey2": "roleVal2"
+        }
+        }
+    ],
+
+    "sharedNetworkAccess": [{
+            "networkPath": "//dept01nas/",
+            "accessType": "RW"
+        }
+    ],
+    "sharedEmails": [
+        "mitchellorderprocessing@mitchell.com",
+        "finance-cashapplications@mitchell.com"
+    ],
+    "comments": "https://confluence.corp.int/display/CCOE/WorkSpaces+Projects"
 }
