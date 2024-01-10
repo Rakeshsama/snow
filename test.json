@@ -1,8 +1,1 @@
-{
-    "profileName": "Coventry-Collections",
-    "initialProvisioning": {
-        "activeDirectory": ["First Name", "Preferred Name", "LastName", "Employee No", "Login ID",
-            "Email","Mirror User",
-            {"AD Groups": ["group1", "group2", "group3"]}
-        ]
-    }
+{"profileName": "Coventry-Collections","initialProvisioning":{"activeDirectory":["First Name","Preferred Name","LastName","Employee No","Login ID","Email","Mirror User",{"AD Groups":["group1", "group2", "group3"]}]}}
