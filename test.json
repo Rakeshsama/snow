@@ -1,1 +1,566 @@
-{"profileName": "Coventry-Collections","initialProvisioning":{"activeDirectory":["First Name","Preferred Name","LastName","Employee No","Login ID","Email","Mirror User",{"AD Groups":["group1", "group2", "group3"]}]}}
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "profileSchema.json",
+    "type": "object",
+    "required": [
+        "profileName",
+        "initialProvisioning",
+        "softwareLicensing",
+        "infrastructure",
+        "installedApplications",
+        "saasApplications",
+        "sharedNetworkAccess",
+        "sharedEmails"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "profileName": {
+            "type": "string"
+        },
+        "initialProvisioning": {
+            "type": "object",
+            "required": [
+                "activeDirectory"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "activeDirectory": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [{
+                            "type": "string",
+                            "required": [
+                                "First Name", "Preferred Name", "LastName", "Employee No", "Login ID",
+                                "Email","Mirror User", "Email Type", "Request ID", "External Address"
+                            ]
+                        },
+                            {
+                                "type": "object",
+                                "required": [
+                                    "adGroups"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "adGroups": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }]
+                    }
+                }
+            }
+        },
+        "softwareLicensing": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "O365",
+                    "windowsMobility10"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "O365": {"$ref": "profileCodeListsDefinitions.json#/$defs/softwareLicensingO365EnumType"
+                    },
+                    "windowsMobility10": {"$ref": "profileCodeListsDefinitions.json#/$defs/softwareLicensingWindowsMobility10EnumType"
+                    }
+                }
+            }
+        },
+        "infrastructure": {
+            "type": "object",
+            "required": [
+                "AWS"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "AWS": {
+                    "type": "object",
+                    "required": [
+                        "account",
+                        "vpc",
+                        "directory",
+                        "awsWorkspace"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "account": {
+                            "type": "string"
+                        },
+                        "vpc": {
+                            "type": "string"
+                        },
+                        "directory": {
+                            "type": "string"
+                        },
+                        "awsWorkspace": {
+                            "type": "object",
+                            "required": [
+                                "bundle",
+                                "rootDriveSpace",
+                                "userDriveSpace",
+                                "os"
+                            ],
+                            "additionalProperties": false,
+                            "properties": {
+                                "bundle": {"$ref": "profileCodeListsDefinitions.json#/$defs/bundleEnumType"
+                                },
+                                "rootDriveSpace": {"$ref": "profileCodeListsDefinitions.json#/$defs/rootDriveSpaceEnumType"
+                                },
+                                "userDriveSpace": {"$ref": "profileCodeListsDefinitions.json#/$defs/userDriveSpaceEnumType"
+                                },
+                                "os": {"$ref": "profileCodeListsDefinitions.json#/$defs/osEnumType"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "installedApplications": {
+            "type": "array",
+            "items": {
+                "anyOf": [{
+                    "type": "string"
+                },
+                    {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "ImageServer": {
+                                "type": "object",
+                                "required": [
+                                    "userProv"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "userProv": {
+                                        "type": "object",
+                                        "required": [
+                                            "provStructAD"
+                                        ],
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "provStructAD": {
+                                                "type": "object",
+                                                "required": [
+                                                    "adGroups"
+                                                ],
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "adGroups": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "SmartAdvisor": {
+                                "type": "object",
+                                "required": [
+                                    "appProv"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "appProv": {
+                                        "type": "object",
+                                        "required": [
+                                            "provStructApp"
+                                        ],
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "provStructApp": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "DecisionPoint": {
+                                "type": "object",
+                                "required": [
+                                    "appProv",
+                                    "userProv"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "appProv": {
+                                        "type": "object",
+                                        "required": [],
+                                        "additionalProperties": false,
+                                        "properties": {}
+                                    },
+                                    "userProv": {
+                                        "type": "object",
+                                        "required": [],
+                                        "additionalProperties": false,
+                                        "properties": {}
+                                    }
+                                }
+                            },
+                            "NDS": {
+                                "type": "object",
+                                "required": [
+                                    "appProv"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "appProv": {
+                                        "type": "object",
+                                        "required": [
+                                            "provStructScript"
+                                        ],
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "provStructScript": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "CrystalReports": {
+                                "type": "object",
+                                "required": [
+                                    "appProv"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "appProv": {
+                                        "type": "object",
+                                        "required": [
+                                            "provStructInstaller"
+                                        ],
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "provStructInstaller": {
+                                                "type": "object",
+                                                "required": [
+                                                    "loc",
+                                                    "cmd"
+                                                ],
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "loc": {
+                                                        "type": "string"
+                                                    },
+                                                    "cmd": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "IRMS": {
+                                "type": "object",
+                                "required": [
+                                    "appProv",
+                                    "userProv"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "appProv": {
+                                        "type": "object",
+                                        "required": [
+                                            "provStructAD"
+                                        ],
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "provStructAD": {
+                                                "type": "object",
+                                                "required": [
+                                                    "adGroups"
+                                                ],
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "adGroups": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "userProv": {
+                                        "type": "object",
+                                        "required": [
+                                            "mimicRoleId",
+                                            "provStructWebservice"
+                                        ],
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "mimicRoleId": {
+                                                "type": "string"
+                                            },
+                                            "provStructWebservice": {
+                                                "type": "object",
+                                                "required": [
+                                                    "wsdl",
+                                                    "getUserDetails",
+                                                    "getUserFunctions",
+                                                    "createNewUser"
+                                                ],
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "wsdl": {
+                                                        "type": "string"
+                                                    },
+                                                    "getUserDetails": {
+                                                        "type": "string"
+                                                    },
+                                                    "getUserFunctions": {
+                                                        "type": "string"
+                                                    },
+                                                    "createNewUser": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "Unity": {
+                                "type": "object",
+                                "required": [
+                                    "userProv"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "userProv": {
+                                        "type": "object",
+                                        "required": [],
+                                        "additionalProperties": false,
+                                        "properties": {}
+                                    }
+                                }
+                            },
+                            "W5": {
+                                "type": "object",
+                                "required": [
+                                    "appProv"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "appProv": {
+                                        "type": "object",
+                                        "required": [
+                                            "provStructInstaller"
+                                        ],
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "provStructInstaller": {
+                                                "type": "object",
+                                                "required": [
+                                                    "loc",
+                                                    "cmd"
+                                                ],
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "loc": {
+                                                        "type": "string"
+                                                    },
+                                                    "cmd": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "FloQast": {
+                                "type": "object",
+                                "required": [
+                                    "appProv",
+                                    "userProv"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "appProv": {
+                                        "type": "object",
+                                        "required": [],
+                                        "additionalProperties": false,
+                                        "properties": {}
+                                    },
+                                    "userProv": {
+                                        "type": "object",
+                                        "required": [],
+                                        "additionalProperties": false,
+                                        "properties": {}
+                                    }
+                                }
+                            },
+                            "MRRS": {
+                                "type": "object",
+                                "required": [
+                                    "appProv",
+                                    "userProv"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "appProv": {
+                                        "type": "object",
+                                        "required": [],
+                                        "additionalProperties": false,
+                                        "properties": {}
+                                    },
+                                    "userProv": {
+                                        "type": "object",
+                                        "required": [],
+                                        "additionalProperties": false,
+                                        "properties": {}
+                                    }
+                                }
+                            }
+                        }
+                    }]
+            }
+        },
+        "saasApplications": {
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "InContact": {
+                                "type": "object",
+                                "properties": {
+                                    "roleKey": {
+                                        "type": "string"
+                                    },
+                                    "mimicRoleId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "Salesforce": {
+                                "type": "object",
+                                "properties": {
+                                    "roleKey": {
+                                        "type": "string"
+                                    },
+                                    "mimicRoleId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "NetSuite": {
+                                "type": "object",
+                                "properties": {
+                                    "roleKey": {
+                                        "type": "string"
+                                    },
+                                    "mimicRoleId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "ESP": {
+                                "type": "object",
+                                "properties": {
+                                    "roleKey": {
+                                        "type": "string"
+                                    },
+                                    "mimicRoleId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "eBlink": {
+                                "type": "object",
+                                "properties": {
+                                    "roleKey": {
+                                        "type": "string"
+                                    },
+                                    "mimicRoleId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "Sharepoint": {
+                                "type": "object",
+                                "properties": {
+                                    "roleKey": {
+                                        "type": "string"
+                                    },
+                                    "mimicRoleId": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }]
+            }
+        },
+        "sharedNetworkAccess": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "networkPath",
+                    "accessType"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "networkPath": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                    },
+                    "accessType": {
+                        "$ref": "profileCodeListsDefinitions.json#/$defs/accessTypeEnumType"
+                    }
+                }
+            }
+        },
+
+        "databaseAccess": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "databaseName",
+                    "accessType"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "databaseName": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 50
+                    },
+                    "accessType": {
+                        "$ref": "profileCodeListsDefinitions.json#/$defs/accessTypeEnumType"
+                    }
+                }
+            }
+        },
+        "sharedEmails": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "format": "email"
+            }
+        },
+        "comments": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 1000
+        }
+    }
+}
