@@ -1,0 +1,98 @@
+{
+    "profileName": "Genex-CashApp",
+    "initialProvisioning": {
+        "activeDirectory": ["First Name", "Preferred Name", "LastName", "Employee No", "Login ID",
+            "Email","Mirror User", "Email Type", "Request ID", "External Address",
+            {"adGroups": []}
+        ]
+    },
+    "softwareLicensing": [
+        {"O365": "E3", "windowsMobility10": "VDA"}
+    ],
+    "infrastructure": {
+        "AWS": {
+            "account": "498269030938",
+            "vpc": "vpc-0ffe17313787c181e",
+            "directory": "d-9067560602",
+            "awsWorkspace": {
+                "bundle": "Performance",
+                "rootDriveSpace": "80 GB SSD",
+                "userDriveSpace": "100 GB SSD",
+                "os": "Win10"
+            }
+        }
+    },
+
+    "installedApplications": [
+        "Acrobat Reader",
+        "MS Office",
+        { "ImageServer" : {
+            "userProv": {
+                "provStructAD": {
+                    "adGroups": [
+                        "genex/\"Accounts Receivable\"",
+                        "genex/\"ARCASH\""
+                    ]
+                }
+            }
+        }
+        },
+        {   "IRMS" : {
+                "appProv": {
+                    "provStructAD": {
+                        "adGroups": [
+                            "genex/\"CVTY-SRV-IRMS-UAT\"",
+                            "genex/\"CVTY-SRV-IRMS-PROD\""
+                        ]
+                    }
+
+                },
+                "userProv": {
+                    "mimicRoleId": "irmsRole1",
+                    "provStructWebservice": {
+                        "wsdl": "http://irmsprod.mitchellcloud.com/irmsprd/IRMSReferenceService/services/IRMSReferenceService?wsdl",
+                        "getUserDetails": "WebService_Reference.getSecurityUser",
+                        "getUserFunctions": "WebService_Setup.getSecurityProfile",
+                        "createNewUser": "WebService_Setup.updSecurityProfile"
+                    }
+
+                }
+            }
+        }
+    ],
+
+    "saasApplications": [
+        {   "Sharepoint": {
+                "roleKey1": "roleVal1"
+            }
+        }
+    ],
+
+    "sharedNetworkAccess": [ {
+            "networkPath": "\\\\phlprdebsfile01.genexservices.com\\attachments",
+            "accessType": "RW"
+        }, {
+            "networkPath": "//phlfaxstore01/",
+            "accessType": "RW"
+        }, {
+        "networkPath": "//phlfile01/",
+        "accessType": "RW"
+    }, {
+        "networkPath": "//phlfile02/",
+        "accessType": "RW"
+    }, {
+        "networkPath": "//phlprddebsfile01/",
+        "accessType": "RW"
+    }, {
+        "networkPath": "//genexservices.com/",
+        "accessType": "RW"
+    }, {
+        "networkPath": "//dept01nas/",
+        "accessType": "RW"
+    }
+    ],
+    "sharedEmails": [
+        "cash@genexservices.com"
+    ],
+    "comments": "https://confluence.corp.int/display/CCOE/WorkSpaces+Projects"
+}
