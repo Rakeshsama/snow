@@ -1,0 +1,94 @@
+{
+    "profileName": "Genex-Coventry-Accounting",
+    "initialProvisioning": {
+        "activeDirectory": ["First Name", "Preferred Name", "LastName", "Employee No", "Login ID",
+            "Email","Mirror User", "Email Type", "Request ID", "External Address",
+            {"adGroups": []}
+        ]
+    },
+    "softwareLicensing": [
+        {"O365": "E3", "windowsMobility10": "VDA"}
+    ],
+    "infrastructure": {
+        "AWS": {
+            "account": "372860290376",
+            "vpc": "vpc-01e3b22f0d6f00d53",
+            "directory": "d-9067bacb91",
+            "awsWorkspace": {
+                "bundle": "Performance",
+                "rootDriveSpace": "80 GB SSD",
+                "userDriveSpace": "100 GB SSD",
+                "os": "Win10"
+            }
+        }
+    },
+
+    "installedApplications": [
+         "Acrobat Reader" ,
+         "MS Office" ,
+        { "IRMS" : {
+                "appProv": {
+                    "provStructAD": {
+                        "adGroups": [
+                            "genex/\"CVTY-SRV-IRMS-UAT\"",
+                            "genex/\"CVTY-SRV-IRMS-PROD\""
+                        ]
+                    }
+
+                },
+                "userProv": {
+                    "mimicRoleId": "irmsRole1",
+                    "provStructWebservice": {
+                        "wsdl": "http://irmsprod.mitchellcloud.com/irmsprd/IRMSReferenceService/services/IRMSReferenceService?wsdl",
+                        "getUserDetails": "WebService_Reference.getSecurityUser",
+                        "getUserFunctions": "WebService_Setup.getSecurityProfile",
+                        "createNewUser": "WebService_Setup.updSecurityProfile"
+                    }
+
+                }
+            }
+        },
+        {   "Unity": {
+            "userProv": {  }
+        }
+        },
+
+        {
+            "W5": {
+                "appProv": {
+                    "provStructInstaller": {
+                        "loc": " https://www.bccorp-solutions.com/ECN/",
+                        "cmd": "W5Install.msi"
+                    }
+                }
+            }
+        },
+        {   "FloQast": {
+            "appProv": {   },
+            "userProv": {  }
+        }
+        }
+
+    ],
+    "saasApplications": [
+        {
+            "NetSuite": {"mimicRoleId": "nsRole"}
+        },
+        { "Sharepoint": {
+            "roleKey1": "roleVal1"
+        }
+        }
+    ],
+    "sharedNetworkAccess": [{
+            "networkPath": "//phlprdfinance01/",
+            "accessType": "RW"
+        }, {
+            "networkPath": "//phlprdftp01/",
+            "accessType": "RW"
+        }, {
+        "networkPath": "//dept01nas/",
+        "accessType": "RW"
+    }
+    ],
+    "comments": "https://confluence.corp.int/display/CCOE/WorkSpaces+Projects"
+}
