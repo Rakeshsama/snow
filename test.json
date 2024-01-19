@@ -1,5 +1,5 @@
 {
-    "profileName": "Genex-CashApp",
+    "profileName": "Genex-Coventry-Accounting",
     "initialProvisioning": {
         "activeDirectory": ["First Name", "Preferred Name", "LastName", "Employee No", "Login ID",
             "Email","Mirror User", "Email Type", "Request ID", "External Address",
@@ -11,9 +11,9 @@
     ],
     "infrastructure": {
         "AWS": {
-            "account": "498269030938",
-            "vpc": "vpc-0ffe17313787c181e",
-            "directory": "d-9067560602",
+            "account": "372860290376",
+            "vpc": "vpc-01e3b22f0d6f00d53",
+            "directory": "d-9067bacb91",
             "awsWorkspace": {
                 "bundle": "Performance",
                 "rootDriveSpace": "80 GB SSD",
@@ -24,20 +24,9 @@
     },
 
     "installedApplications": [
-        "Acrobat Reader",
-        "MS Office",
-        { "ImageServer" : {
-            "userProv": {
-                "provStructAD": {
-                    "adGroups": [
-                        "genex/\"Accounts Receivable\"",
-                        "genex/\"ARCASH\""
-                    ]
-                }
-            }
-        }
-        },
-        {   "IRMS" : {
+         "Acrobat Reader" ,
+         "MS Office" ,
+        { "IRMS" : {
                 "appProv": {
                     "provStructAD": {
                         "adGroups": [
@@ -58,41 +47,48 @@
 
                 }
             }
+        },
+        {   "Unity": {
+            "userProv": {  }
         }
-    ],
+        },
 
-    "saasApplications": [
-        {   "Sharepoint": {
-                "roleKey1": "roleVal1"
+        {
+            "W5": {
+                "appProv": {
+                    "provStructInstaller": {
+                        "loc": " https://www.bccorp-solutions.com/ECN/",
+                        "cmd": "W5Install.msi"
+                    }
+                }
             }
+        },
+        {   "FloQast": {
+            "appProv": {   },
+            "userProv": {  }
+        }
+        }
+
+    ],
+    "saasApplications": [
+        {
+            "NetSuite": {"mimicRoleId": "nsRole"}
+        },
+        { "Sharepoint": {
+            "roleKey1": "roleVal1"
+        }
         }
     ],
-
-    "sharedNetworkAccess": [ {
-            "networkPath": "\\\\phlprdebsfile01.genexservices.com\\attachments",
+    "sharedNetworkAccess": [{
+            "networkPath": "//phlprdfinance01/",
             "accessType": "RW"
         }, {
-            "networkPath": "//phlfaxstore01/",
+            "networkPath": "//phlprdftp01/",
             "accessType": "RW"
         }, {
-        "networkPath": "//phlfile01/",
-        "accessType": "RW"
-    }, {
-        "networkPath": "//phlfile02/",
-        "accessType": "RW"
-    }, {
-        "networkPath": "//phlprddebsfile01/",
-        "accessType": "RW"
-    }, {
-        "networkPath": "//genexservices.com/",
-        "accessType": "RW"
-    }, {
         "networkPath": "//dept01nas/",
         "accessType": "RW"
     }
-    ],
-    "sharedEmails": [
-        "cash@genexservices.com"
     ],
     "comments": "https://confluence.corp.int/display/CCOE/WorkSpaces+Projects"
 }
