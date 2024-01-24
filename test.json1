@@ -53,11 +53,7 @@
         }
     ],
 
-    "sharedNetworkAccess": [{
-            "networkPath": "//dept01nas/",
-            "accessType": "RW"
-        }
-    ],
+   
     "sharedEmails": [
         "mitchellorderprocessing@mitchell.com",
         "finance-cashapplications@mitchell.com"
